@@ -1,5 +1,5 @@
 # BetterReset
-<img width="514" alt="スクリーンショット 2023-02-11 18 33 27" src="https://user-images.githubusercontent.com/47273077/218251174-66b63168-094d-4eb4-b640-94a33d2611e9.gif">
+<img width="300" alt="スクリーンショット 2023-02-11 18 33 27" src="https://user-images.githubusercontent.com/47273077/218251174-66b63168-094d-4eb4-b640-94a33d2611e9.gif">
 
 ```swift
 struct ContentView: View {
