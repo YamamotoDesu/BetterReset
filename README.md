@@ -73,3 +73,8 @@ struct ContentView: View {
 }
 
 ```
+
+CSV
+https://github.com/twostraws/HackingWithSwift/blob/main/SwiftUI/project4-files/BetterRest.csv
+<img width="928" alt="スクリーンショット 2023-02-11 18 32 34" src="https://user-images.githubusercontent.com/47273077/218251104-ef32d4e8-6e05-4aac-95a7-78d9fe9a5842.png">
+
