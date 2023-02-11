@@ -1,10 +1,10 @@
 # BetterReset
-<img width="300" alt="スクリーンショット 2023-02-11 18 33 27" src="https://user-images.githubusercontent.com/47273077/218251174-66b63168-094d-4eb4-b640-94a33d2611e9.gif">
+<img width="300" alt="スクリーンショット 2023-02-11 18 33 27" src="https://user-images.githubusercontent.com/47273077/218251731-847c1990-863c-4f8c-b952-33b7c6ad14e4.gif">
 
 ```swift
-struct ContentView: View {
 
-    @State private var wakeUp = Date.now
+struct ContentView: View {
+    @State private var wakeUp = defaultWakeTime
     @State private var sleepAmount = 0.0
     @State private var coffeeAmount = 1
     
@@ -12,25 +12,38 @@ struct ContentView: View {
     @State private var alertMessage = ""
     @State private var showingAlert = false
     
+    static var defaultWakeTime: Date {
+        var components = DateComponents()
+        components.hour = 7
+        components.minute = 0
+        return Calendar.current.date(from: components) ?? Date.now
+    }
+
     var body: some View {
         NavigationView {
-            VStack {
-                Text("When do you want to wake up?")
-                    .font(.headline)
-                
-                DatePicker("Please enter a time", selection: $wakeUp, displayedComponents:
-                        .hourAndMinute)
-                .labelsHidden()
-                
-                Text("Desired amount of sleep")
-                    .font(.headline)
-                
-                Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
-                
-                Text("Daily coffee intake")
-                    .font(.headline)
-                
-                Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) coups", value: $coffeeAmount, in: 1...20)
+            Form {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("When do you want to wake up?")
+                        .font(.headline)
+                    
+                    DatePicker("Please enter a time", selection: $wakeUp, displayedComponents:
+                            .hourAndMinute)
+                    .labelsHidden()
+                }
+
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Desired amount of sleep")
+                        .font(.headline)
+                    
+                    Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
+                }
+
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Daily coffee intake")
+                        .font(.headline)
+                    
+                    Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) coups", value: $coffeeAmount, in: 1...20)
+                }
             }
             .navigationTitle("BetterRest")
             .toolbar {
